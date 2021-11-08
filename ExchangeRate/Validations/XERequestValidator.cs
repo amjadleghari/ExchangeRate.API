@@ -17,6 +17,10 @@ namespace ExchangeRate.Validations
             RuleFor(x => x.margin)
                 .Must(field => field >= 0)
                 .WithMessage(ErrorMessages.MarginInvalid.GetDescription());
+
+            RuleFor(x => x.toCurrency)
+                .Must(field => !String.IsNullOrEmpty(field))
+                .WithMessage(ErrorMessages.ConvertToCurrencyInvalid.GetDescription());
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ExchangeRate.Services
             {
                 var validator = new XERequestValidator();
                 validator.ValidateAndThrow(request);
-                List<Currency> currencies = await GetCachedCurrencies();
+                //List<Currency> currencies = await GetCachedCurrencies();
                 
                 return await _xeClient.GetExchangeRatesAsync(request);
             }

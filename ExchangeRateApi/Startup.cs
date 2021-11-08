@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExchangeRate.Caching;
 using ExchangeRate.Extensions;
 using ExchangeRate.HttpClients;
 using ExchangeRate.Services;
@@ -67,6 +68,7 @@ namespace ExchangeRateApi
             services.AddTransient<IRestClient, RestClient>();
             services.AddTransient<IXEClient, XEClient>();
             services.AddTransient<IXEService, XEService>();
+            services.AddScoped<IMemoryCacheHelper>(x => new MemoryCacheHelper(MemoryCacheInstance.Cache));
             services.ConfigurePollyPolicies();
         }
 

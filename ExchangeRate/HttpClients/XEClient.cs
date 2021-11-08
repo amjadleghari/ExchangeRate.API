@@ -67,8 +67,8 @@ namespace ExchangeRate.HttpClients
             if (currencyRequest.margin > 0)
                 request.AddParameter("margin", currencyRequest.margin);
 
-            var retVal = await client.ExecuteAsync<ApiResult<XERatesResponse>>(request);
-            return retVal.Data.Data;
+            var retVal = await client.ExecuteAsync<XERatesResponse>(request);
+            return retVal.Data;
         }
 
         public async Task<List<Currency>> GetCurrenciesAsync()
